@@ -60,15 +60,33 @@ return cardDiv;
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
 const cardAppender = (selector) => {
-
+  const cardsContainer = document.querySelector(selector)
   axios
   .get('https://lambda-times-api.herokuapp.com/articles')
-  .then((res) => {
-    debugger;
+  .then((res) => {  
+    const jsArticles = res.data.articles.javascript.forEach((item) => {
+      const jsCards = item;
+      cardsContainer.appendChild(Card(jsCards));
+    })
+    const bootstrapArticles = res.data.articles.bootstrap.forEach((item) => {
+      const bootstrapCards = item;
+      cardsContainer.appendChild(Card(bootstrapCards));
+    })
+    const jqueryArticles = res.data.articles.jquery.forEach((item) => {
+      const jqueryCards = item;
+      cardsContainer.appendChild(Card(jqueryCards));
+    })
+    const nodeArticles = res.data.articles.node.forEach((item) => {
+      const nodeCards = item;
+      cardsContainer.appendChild(Card(nodeCards));
+    })
+    const technologyArticles = res.data.articles.technology.forEach((item) => {
+      const technologyCards = item;
+      cardsContainer.appendChild(Card(technologyCards));
+    })
   })
   .catch((err) => {
-    debugger;
-    // console.log('Error');
+    console.log('Error');
   })
 }
 

@@ -40,9 +40,10 @@ const Header = (title, date, temp) => {
   // It should append the header to the element in the DOM that matches the given selector.
   //
 const headerAppender = (selector) => {
-  const headerContainer = document.querySelector('.header-container');
+  const headerContainer = document.querySelector(selector);
   const heading = Header('Lambda Times', 'Apr 9, 2021', '60°');
   headerContainer.appendChild(heading);
+  return headerContainer;
 }
 
 export { Header, headerAppender }
